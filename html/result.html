@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результаты расчета</title>
+    <link href="/css/cssindex.css" rel="stylesheet" type="text/css">
+    </head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" style="margin-left: 10px;">Прокачай себя</a>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Главная</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Упражнения</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-disabled="true" href="#">Рассчитать</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <div class="containerr">
+        <h1>Результаты расчета</h1>
+        <!-- Здесь можно добавить элементы для вывода результатов расчета -->
+        <div id="result">
+            <!-- Здесь будут выводиться результаты расчета -->
+        </div>
+        <a href="/html/instuction.html" class="button">Как правильно выполнять упражнения</a>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Получаем параметры из URL
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // Извлекаем необходимые параметры
+            const weight = urlParams.get('weight');
+            const height = urlParams.get('height');
+            const goal = urlParams.get('goal');
+            const result = decodeURIComponent(urlParams.get('result'));
+            const weeklyResult = decodeURIComponent(urlParams.get('weeklyResult'));
+
+            // Формируем текст для отображения на странице
+            const displayText = `<p>${result}</p>
+                                <p>Рассчёт на месяц:</p>
+                                <p>${weeklyResult}</p>`;
+
+            // Выводим текст на странице
+            document.getElementById('result').innerHTML = displayText;
+        });
+    </script>
+    
+</body>
+</html>
